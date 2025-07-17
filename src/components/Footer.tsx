@@ -66,15 +66,15 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center">
                 <Phone className="w-4 h-4 mr-3 text-yellow-400" />
-                <span className="text-gray-400">+1 (555) 123-4567</span>
+                <span className="text-gray-400">+94 776024572</span>
               </div>
               <div className="flex items-center">
                 <Mail className="w-4 h-4 mr-3 text-yellow-400" />
-                <span className="text-gray-400">info@sunraymotors.com</span>
+                <span className="text-gray-400">sunraymotors.sl@gmail.com</span>
               </div>
               <div className="flex items-start">
                 <MapPin className="w-4 h-4 mr-3 text-yellow-400 mt-1" />
-                <span className="text-gray-400">123 Auto Parts Ave<br />Motor City, MC 12345</span>
+                <span className="text-gray-400"> 191/A/PANCHIKAWATHA,COLOMBO 10</span>
               </div>
             </div>
           </div>

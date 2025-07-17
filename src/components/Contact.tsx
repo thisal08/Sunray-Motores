@@ -48,8 +48,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-800 mb-1">Phone</h4>
-                  <p className="text-gray-600">Main: +1 (555) 123-4567</p>
-                  <p className="text-gray-600">Emergency: +1 (555) 123-4568</p>
+                  <p className="text-gray-600">Main: +94 776024572</p>
                 </div>
               </div>
 
@@ -59,8 +58,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-800 mb-1">Email</h4>
-                  <p className="text-gray-600">info@sunraymotors.com</p>
-                  <p className="text-gray-600">sales@sunraymotors.com</p>
+                  <p className="text-gray-600">sunraymotors.sl@gmail.com</p>
                 </div>
               </div>
 
@@ -70,8 +68,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-800 mb-1">Address</h4>
-                  <p className="text-gray-600">123 Auto Parts Avenue</p>
-                  <p className="text-gray-600">Motor City, MC 12345</p>
+                  <p className="text-gray-600"> 191/A/PANCHIKAWATHA,COLOMBO 10</p>
                 </div>
               </div>
 
@@ -81,9 +78,9 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-800 mb-1">Business Hours</h4>
-                  <p className="text-gray-600">Monday - Friday: 8:00 AM - 6:00 PM</p>
-                  <p className="text-gray-600">Saturday: 8:00 AM - 4:00 PM</p>
-                  <p className="text-gray-600">Sunday: 10:00 AM - 2:00 PM</p>
+                  <p className="text-gray-600">Monday - Friday: 9:00 AM - 5:00 PM</p>
+                  <p className="text-gray-600">Saturday: 9:00 AM - 3:00 PM</p>
+                  <p className="text-gray-600">Sunday: Closed </p>
                 </div>
               </div>
             </div>
