@@ -1,33 +1,15 @@
-# ========== Build Stage ==========
-FROM node:lts-alpine AS builder
+FROM node:lts-alpine
 
-# Install pnpm
-RUN npm install -g pnpm
+RUN npm install -g pnpm serve
 
 WORKDIR /app
 
 COPY package.json pnpm-lock.yaml* ./
-RUN pnpm install
-
-RUN pnpm approve-builds
+RUN pnpm install --frozen-lockfile
 
 COPY . .
 RUN pnpm build
 
-RUN ls dist
+EXPOSE 3000
 
-# ========== Production Stage ==========
-FROM nginx:alpine
-
-# Clean default nginx config
-RUN rm /etc/nginx/conf.d/default.conf
-
-# Copy built app
-COPY --from=builder /app/dist /usr/share/nginx/html
-
-# Copy custom nginx config
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["serve", "-s", "dist", "-l", "3000"]
