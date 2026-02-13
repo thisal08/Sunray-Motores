@@ -1,35 +1,33 @@
 # ========== Build Stage ==========
 FROM node:lts-alpine AS builder
 
+# Install pnpm
 RUN npm install -g pnpm
 
 WORKDIR /app
 
 COPY package.json pnpm-lock.yaml* ./
-RUN pnpm install --frozen-lockfile
+RUN pnpm install
+
+RUN pnpm approve-builds
 
 COPY . .
 RUN pnpm build
 
+RUN ls dist
+
 # ========== Production Stage ==========
-FROM node:lts-alpine AS runner
+FROM nginx:alpine
 
-WORKDIR /app
-ENV NODE_ENV=production
-ENV PORT=3000
+# Clean default nginx config
+RUN rm /etc/nginx/conf.d/default.conf
 
-# Install pnpm
-RUN npm install -g pnpm
+# Copy built app
+COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Copy only necessary files
-COPY --from=builder /app/package.json ./package.json
-COPY --from=builder /app/pnpm-lock.yaml ./pnpm-lock.yaml
-COPY --from=builder /app/pnpm-workspace.yaml ./pnpm-workspace.yaml
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/public ./public
+# Copy custom nginx config
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 
-# Install only production deps
-RUN pnpm install --prod --frozen-lockfile
+EXPOSE 80
 
-EXPOSE 3000
-CMD ["pnpm", "start"]
+CMD ["nginx", "-g", "daemon off;"]
